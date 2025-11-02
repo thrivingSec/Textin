@@ -14,7 +14,7 @@ dotenv.config({ path: ".env" });
 
 // middlewares
 app.use(cors({
-  origin:"https://textin-1.onrender.com",
+  origin:"http://localhost:5173",
   credentials:true
 }))
 app.use(bodyParser.json());
