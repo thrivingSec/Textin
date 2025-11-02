@@ -7,6 +7,6 @@ export const createToken = (userId, res) => {
     maxAge: 7*24*60*60*1000, // cokkie age in milli sec
     httpOnly:true, // protects against the XSS attacks
     sameSite:"strict", // protects agains csrf
-    secure: true
+    secure: process.env.NODE_ENV !== 'development'
   })
 }
