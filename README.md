@@ -3,6 +3,9 @@
 Textin is a full-stack real-time chat application built with the MERN stack and Socket.IO, featuring secure authentication, user connections, and instant messaging.
 Designed with scalability, modularity, and clean code architecture in mind, it demonstrates mastery over modern web development concepts such as JWT authentication, RESTful APIs, and real-time event communication.
 
+
+![Landing Page](./Screenshots/1_LandingPage.png)
+
 <h2>🧠 Table of Contents</h2>
 <ul>
   <li>Overview</li>
@@ -55,16 +58,16 @@ This project focuses not only on user experience but also on the internal archit
 <h2>💡 Features</h2>
 <h3>🔐 User Authentication & Authorization</h3>
 <ul>
-  <li>Secure signup/login using JWT tokens stored in cookies.</li>
-  <li>Email verification through a OTP mechanism.</li>
+  <li>Secure signup/login using JWT tokens stored in cookies.<br/><img src="./Screenshots/2_SignupPage.png" alt="Signup Page" width="800"><br/><img src="./Screenshots/4_LoginPage.png" alt="Login Page" width="800"></li>
+  <li>Email verification through a OTP mechanism.<br/><img src="./Screenshots/3_OtpPage.png" alt="OTP Page" width="800"></li>
   <li>Protected routes ensuring only verified users access critical endpoints.</li>
 </ul>
 
 <h3>🧑‍🤝‍🧑 User Search & Connections</h3>
 <ul>
-  <li>Search for users by username and view their profile image.</li>
-  <li>Send/receive connection requests and manage them directly from the profile page.</li>
-  <li>Accept/reject incoming requests seamlessly.</li>
+  <li>Search for users by username and view their profile image.<br/><img src="./Screenshots/6_SearchAndConnectWithUsers.png" alt="Search Users Page" width="800"></li>
+  <li>Send/receive connection requests and manage them directly from the profile page.<br/><img src="./Screenshots/7_RequestSentForConnection.png" alt="Search and connect with users" width="800"></li>
+  <li>Accept/reject incoming requests seamlessly.<br/><img src="./Screenshots/11_IncomingPendingRequest.png" alt="Pending request accept or reject" width="800"><br/><img src="./Screenshots/10_AllConnectedUsers.png" alt="All connected users" width="800"></li>
 </ul>
 
 <h3>💬 User Chat (One-to-One)</h3>
@@ -74,7 +77,7 @@ This project focuses not only on user experience but also on the internal archit
   <li>Image messages</li>
   <li>Emojis</li>
 </ul>
-<b>All messages are delivered in real-time via Socket.IO.</b>
+<b>All messages are delivered in real-time via Socket.IO.<br/><img src="./Screenshots/5_HomePageWithUserChatOpen.png" alt="Home page" width="800"></b>
 
 <h3>Real-Time Features</h3>
 <ul>
@@ -91,7 +94,7 @@ This project focuses not only on user experience but also on the internal archit
   <li>Manage pending connection requests</li>
   <li>Update username anytime</li>
 </ul>
-
+<br/><img src="./Screenshots/8_ProfilePage.png" alt="Profile page" width="800">
 Each connected user establishes a WebSocket connection through Socket.IO, enabling event-driven communication without repeated HTTP requests.
 
 <h2>🛠️ Installation & Setup</h2>
