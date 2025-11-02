@@ -56,7 +56,7 @@ const UserSearchFeature = () => {
             </div>
           </div>
         ) : userResult ? (
-          <div className="w-full">
+          <div className="w-full flex">
             {userResult.map((user, index) => (
               <UserSearchResultCard key={index} user={user} />
             ))}

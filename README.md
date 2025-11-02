@@ -25,6 +25,7 @@ This project focuses not only on user experience but also on the internal archit
 <h2>⚙️ Tech Stack</h2>
 
 <b>Frontend:</b>
+
 <ul>
   <li>React.js (Component-based UI)</li>
   <li>Redux Toolkit (State Management)</li>
@@ -34,6 +35,7 @@ This project focuses not only on user experience but also on the internal archit
 </ul>
 
 <b>Backend:</b>
+
 <ul>
   <li>Node.js + Express.js (API server)</li>
   <li>MongoDB + Mongoose (Database ORM)</li>
@@ -43,6 +45,7 @@ This project focuses not only on user experience but also on the internal archit
 </ul>
 
 <b>Utilities:</b>
+
 <ul>
   <li>Multer (File handling for image uploads)</li>
   <li>bcrypt.js (Password hashing)</li>
@@ -89,10 +92,7 @@ This project focuses not only on user experience but also on the internal archit
   <li>Update username anytime</li>
 </ul>
 
-
 Each connected user establishes a WebSocket connection through Socket.IO, enabling event-driven communication without repeated HTTP requests.
-
-
 
 <h2>🛠️ Installation & Setup</h2>
 <h3>1️⃣ Clone the Repository</h3>
@@ -116,22 +116,22 @@ NODE_ENV = 'development'<br>
 CLOUDINARY_API_SECRET=your cloudinary api secret<br>
 CLOUDINARY_API_KEY=your cloudinary api key<br>
 CLOUDINARY_CLOUD_NAME=your cloudinary cloudname<br>
+COMPANY_EMAIL = your email<br>
+COMAPNY_EMAIL_PASS = your email pass<br>
 
 <h3>5️⃣ Run the Application</h3>
 # Run backend<br>
-<b>npm run server</b><br>
+<b>npm run dev</b><br>
 # Run frontend<br>
-<b>npm start</b><br>
+<b>npm run dev</b><br>
 
 <h2>🚀 Future Enhancements</h2>
 <ul>
   <li>✍️ Typing Indicators</li>
   <li>🗑️ Account Deletion</li>
   <li>🔍 Search connected users directly from home page</li>
-  <li>👁️ Toggle Password Visibility during Login/Signup</li>
   <li>🧵 Group Chats & Media Attachments</li>
 </ul>
-
 
 <h2>👨‍💻 Author</h2>
 

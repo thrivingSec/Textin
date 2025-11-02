@@ -15,8 +15,10 @@ import UserConnectionCard from "../components/UserConnectionCard.jsx";
 import UserPendingRequestCard from "../components/UserPendingRequestCard.jsx";
 import AllConnections from "../components/AllConnections.jsx";
 import AllRequests from "../components/AllRequests.jsx";
+import { getLoginUser } from "../utils/getLoginUser.jsx";
 
 const ProfilePage = () => {
+  getLoginUser();
   const navigate = useNavigate();
   const { loginUser } = useSelector((store) => store.user);
   const dispatch = useDispatch();

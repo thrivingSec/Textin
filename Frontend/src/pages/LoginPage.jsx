@@ -6,6 +6,8 @@ import axios from "axios";
 import { serverURL } from "../main";
 import { useDispatch } from "react-redux";
 import { setLoginUser } from "../redux/userSlice";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -36,6 +38,7 @@ const LoginPage = () => {
       console.log(error);
     }
   };
+  const [viewPass, setViewPass] = useState(false);
 
   return (
     <div className="relative w-full h-screen bg-gray-900 p-8 sm:p-8">
@@ -67,10 +70,16 @@ const LoginPage = () => {
                 />
               </div>
               {/* passowrd input field */}
-              <div className="w-full flex flex-col items-start gap-2">
+              <div className="w-full flex flex-col items-start gap-2 relative">
+                <div
+                  className="absolute right-2 top-[45px] w-7 h-7 text-gray-200"
+                  onClick={(e) => setViewPass(!viewPass)}
+                >
+                  {!viewPass ? <FaEye /> : <FaEyeSlash />}
+                </div>
                 <span className="text-white ml-1 font-bold">Password</span>
                 <input
-                  type="password"
+                  type={`${viewPass ? "text" : "password"}`}
                   placeholder="Password"
                   required
                   className="w-full py-2 px-3 bg-gray-700 border-blue-700 border-2 shadow-2xl outline-none rounded-lg"
