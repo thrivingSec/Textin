@@ -7,7 +7,7 @@ export const app = express();
 export const server = http.createServer(app);
 
 export const io = new Server(server, {
-  cors:"http://localhost:5137"
+  cors:"https://textin-1.onrender.com"
 });
 
 // socket operation: Live users
