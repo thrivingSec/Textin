@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 
-export const serverURL = "https://textin.onrender.com";
+export const serverURL = "http://localhost:3000";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
