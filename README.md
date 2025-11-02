@@ -56,7 +56,7 @@ This project focuses not only on user experience but also on the internal archit
 <h3>🔐 User Authentication & Authorization</h3>
 <ul>
   <li>Secure signup/login using JWT tokens stored in cookies.</li>
-  <li>Email verification through a time-bound OTP mechanism.</li>
+  <li>Email verification through a OTP mechanism.</li>
   <li>Protected routes ensuring only verified users access critical endpoints.</li>
 </ul>
 
@@ -96,34 +96,34 @@ Each connected user establishes a WebSocket connection through Socket.IO, enabli
 
 <h2>🛠️ Installation & Setup</h2>
 <h3>1️⃣ Clone the Repository</h3>
-git clone https://github.com/thrivingSec/Textin.git 
+git clone https://github.com/thrivingSec/Textin.git</br>
 cd Textin
 <h3>2️⃣ Setup the Backend</h3>
-cd backend<br>
+cd backend</br>
 npm install
 <h3>3️⃣ Setup the Frontend</h3>
-cd frontend
+cd frontend</br>
 npm install
 
 <h3>4️⃣ Configure Environment Variables</h3>
 
 <b>Create a .env file inside /backend with:</b>
 
-PORT = 3000<br>
-DB_URL = your mongodb connections string<br>
-JWT_SECRET = your jwt secret key to encrypt password<br>
-NODE_ENV = 'development'<br>
-CLOUDINARY_API_SECRET=your cloudinary api secret<br>
-CLOUDINARY_API_KEY=your cloudinary api key<br>
-CLOUDINARY_CLOUD_NAME=your cloudinary cloudname<br>
-COMPANY_EMAIL = your email<br>
-COMAPNY_EMAIL_PASS = your email pass<br>
+PORT = 3000</br>
+DB_URL = your mongodb connections string</br>
+JWT_SECRET = your jwt secret key to encrypt password</br>
+NODE_ENV = 'development'</br>
+CLOUDINARY_API_SECRET=your cloudinary api secret</br>
+CLOUDINARY_API_KEY=your cloudinary api key</br>
+CLOUDINARY_CLOUD_NAME=your cloudinary cloudname</br>
+COMPANY_EMAIL = your email</br>
+COMAPNY_EMAIL_PASS = your email pass</br>
 
 <h3>5️⃣ Run the Application</h3>
 # Run backend<br>
-<b>npm run dev</b><br>
-# Run frontend<br>
-<b>npm run dev</b><br>
+<b>npm run dev</b></br>
+# Run frontend<br/>
+<b>npm run dev</b></br>
 
 <h2>🚀 Future Enhancements</h2>
 <ul>
