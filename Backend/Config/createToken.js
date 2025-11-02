@@ -6,7 +6,7 @@ export const createToken = (userId, res) => {
   res.cookie('jwt', token, {
     maxAge: 7*24*60*60*1000, // cokkie age in milli sec
     httpOnly:true, // protects against the XSS attacks
-    sameSite:"None", // protects agains csrf
+    sameSite:"strict", // protects agains csrf
     secure: true
   })
 }
