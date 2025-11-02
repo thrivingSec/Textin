@@ -14,7 +14,6 @@ Designed with scalability, modularity, and clean code architecture in mind, it d
   <li>Installation & Setup</li>
   <li>Environment Variables</li>
   <li>Future Enhancements</li>
-  <li>Screenshots</li>
   <li>Author</li>
 </ul>
 
