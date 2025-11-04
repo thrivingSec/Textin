@@ -22,6 +22,12 @@ io.on('connection', (socket) => {
     liveUsers[userId] = socket.id;
     io.emit('getLiveUsers', Object.keys(liveUsers))
   }
+  socket.on('typing', ({receiverId, isTyping}) => {
+    const receiverSockId = liveUserSocketId(receiverId);
+    if(receiverSockId){
+      io.to(receiverSockId).emit('typing', {from: socket.id, isTyping})
+    } 
+  })
   socket.on('disconnect', () => {
     delete liveUsers[userId];
     io.emit('getLiveUsers', Object.keys(liveUsers))

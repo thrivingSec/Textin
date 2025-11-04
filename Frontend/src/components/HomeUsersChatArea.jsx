@@ -31,6 +31,8 @@ const HomeUsersChatArea = () => {
 
   const [sendingMsg, setSendingMsg] = useState(false);
 
+  const [typing, setTyping] = useState(false);
+
   const handleEmojiPicker = (emojiObject) => {
     setInputText(inputText + emojiObject.emoji);
     setShowEmojiPicker(false);
@@ -42,9 +44,19 @@ const HomeUsersChatArea = () => {
     setFrontEndImage(URL.createObjectURL(file));
   };
 
+  const handleTyping = (e) => {
+    setInputText(e.target.value);
+    let socket = getSocket();
+    socket.emit("typing", {
+      receiverId: textingUser._id,
+      isTyping: e.target.value.length > 0,
+    });
+  };
+
   const handleSendChat = async (e) => {
     try {
       setSendingMsg(true);
+      let socket = getSocket();
       const newForm = new FormData();
       newForm.append("message", inputText);
       if (backEndImage) {
@@ -56,6 +68,10 @@ const HomeUsersChatArea = () => {
         { withCredentials: true }
       );
       dispatch(setText([...text, res.data]));
+      socket.emit("typing", {
+        receiverId: textingUser._id,
+        isTyping: false,
+      });
       setInputText("");
       setBaclEndImage(null);
       setFrontEndImage(null);
@@ -70,6 +86,9 @@ const HomeUsersChatArea = () => {
     let socket = getSocket();
     socket.on("newMessage", (newText) => {
       dispatch(setText([...text, newText]));
+    });
+    socket.on("typing", ({ from, isTyping }) => {
+      setTyping(isTyping);
     });
     return () => {
       socket.off();
@@ -95,6 +114,7 @@ const HomeUsersChatArea = () => {
           </div>
           <div>
             <h1>{textingUser?.name}</h1>
+            <p className="text-sm text-gray-400">{typing ? "typing..." : ""}</p>
           </div>
         </div>
         {/* Back button */}
@@ -166,7 +186,7 @@ const HomeUsersChatArea = () => {
         <input
           type="text"
           className="bg-white h-8 w-full px-4 outline-none text-black"
-          onChange={(e) => setInputText(e.target.value)}
+          onChange={(e) => handleTyping(e)}
           value={inputText ? inputText : ""}
         />
         {/* send chat */}
