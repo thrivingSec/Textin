@@ -76,12 +76,13 @@ This project focuses not only on user experience but also on the internal archit
   <li>Image messages</li>
   <li>Emojis</li>
 </ul>
-<b>All messages are delivered in real-time via Socket.IO.<br/><img src="./Screenshots/5_HomePageWithUserChatOpen.png" alt="Home page" width="800"></b>
+<b>All messages are delivered in real-time via Socket.IO.<br/><img src="./Screenshots/5_HomePageWithUserChatOpen.png" alt="Home page" width="800"><br/><img src="./Screenshots/13_HomePageWithTypingIndicators.png" alt="Home page" width="800"></b>
 
 <h3>Real-Time Features</h3>
 <ul>
   <li>🟢 Online/Offline Status: Users can see which of their connections are currently online.</li>
   <li>⚡ Instant Message Delivery: Socket.IO ensures low-latency message propagation.</li>
+  <li>✍️ Typing Indicators</li>
   <li>👤 User Profile Management</li>
 </ul>
 
@@ -129,7 +130,6 @@ COMAPNY_EMAIL_PASS = your email pass</br>
 
 <h2>🚀 Future Enhancements</h2>
 <ul>
-  <li>✍️ Typing Indicators</li>
   <li>🗑️ Account Deletion</li>
   <li>🔍 Search connected users directly from home page</li>
   <li>🧵 Group Chats & Media Attachments</li>
