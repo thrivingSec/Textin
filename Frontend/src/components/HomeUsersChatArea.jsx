@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { IoChevronBackCircleOutline } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { setTextingUser } from "../redux/userSlice";
 import { GrEmoji } from "react-icons/gr";
@@ -119,7 +119,7 @@ const HomeUsersChatArea = () => {
         </div>
         {/* Back button */}
         <div>
-          <IoChevronBackCircleOutline
+          <IoCloseSharp
             className="size-7"
             onClick={(e) => dispatch(setTextingUser(null))}
           />

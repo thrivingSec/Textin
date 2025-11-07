@@ -63,7 +63,7 @@ const ProfilePage = () => {
     return <div>Loading State</div>;
   }
   return (
-    <div className="relative w-full h-screen bg-gray-900 p-8 sm:p-8 flex justify-center">
+    <div className="relative w-full h-screen bg-gray-900 p-8 flex justify-center">
       {/* blur effect */}
       <div className="-top-32 -left-32 w-[400px] h-[400px] bg-gradient-to-r from-blue-600/30 to-purple-600/30 blur-3xl rounded-full animate-pulse absolute"></div>
       {/* profile container */}
@@ -93,7 +93,7 @@ const ProfilePage = () => {
           </div>
 
           <FaUserPlus
-            className="absolute top-2 right-2 size-7 text-white border-1 border-white p-1 rounded-md"
+            className="absolute top-2 right-2 size-7 text-white border-1 border-white p-1 rounded-md cursor-pointer"
             onClick={(e) => setShowRequests(true)}
           />
           <div
@@ -118,10 +118,10 @@ const ProfilePage = () => {
               />
             </div>
           </div>
-          {/* followers/following */}
+          {/* Connections */}
           <div className="w-full flex justify-center">
             <div
-              className="w-[250px] bg-gray-900 border-2 border-gray-700 rounded-lg p-1 text-white font-semibold flex justify-center"
+              className="w-[250px] bg-gray-900 border-2 border-gray-700 rounded-lg p-1 font-semibold flex justify-center cursor-pointer text-blue-500"
               onClick={(e) => setShowConnects(true)}
             >
               Connections{" "}

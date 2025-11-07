@@ -14,12 +14,14 @@ import { getLoginUser } from "../utils/getLoginUser";
 import HomeUsersChatList from "../components/HomeUsersChatList";
 import HomeUsersChatArea from "../components/HomeUsersChatArea";
 import { getConversation } from "../utils/getConversations";
+import LogoutPoupup from "../components/LogoutPopup";
 
 const HomePage = () => {
   getLoginUser();
   getConversation();
   const [searching, setSearching] = useState(false);
   const [texting, setTexting] = useState(true);
+  const [logout, setLogout] = useState(false);
   const { loginUser } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
@@ -90,10 +92,14 @@ const HomePage = () => {
 
       <div className="w-full h-full flex justify-end py-2">
         {/* sidebar */}
-        <div className="hidden lg:flex flex-col items-center justify-between w-[3%] h-full p-2 ">
+        <div className="hidden lg:flex flex-col items-center justify-between w-[3%] h-full pl-2 ">
           {/* top */}
           <div className="w-full flex flex-col">
-            <div className="w-full mt-5 cursor-pointer">
+            <div
+              className={`w-full mt-5 cursor-pointer ${
+                texting ? "border-r-3 border-blue-600" : ""
+              } py-1`}
+            >
               <AiFillWechat
                 className="size-7 text-gray-200"
                 onClick={(e) => {
@@ -103,13 +109,17 @@ const HomePage = () => {
               />
             </div>
             <div
-              className="w-full mt-5 cursor-pointer"
-              onClick={(e) => {
-                setSearching(true);
-                setTexting(false);
-              }}
+              className={`w-full mt-5 cursor-pointer ${
+                searching ? "border-r-3 border-blue-600" : ""
+              } py-1`}
             >
-              <MdOutlineManageSearch className="size-7 text-gray-200" />
+              <MdOutlineManageSearch
+                className="size-7 text-gray-200"
+                onClick={(e) => {
+                  setSearching(true);
+                  setTexting(false);
+                }}
+              />
             </div>
           </div>
           {/* bottom */}
@@ -127,7 +137,11 @@ const HomePage = () => {
             <div className="size-7 rounded-full border-2 border-gray-600 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer flex items-center justify-center">
               <IoArrowBackCircleOutline
                 className="text-white w-full h-full"
-                onClick={handleLogout}
+                onClick={(e) => {
+                  setTexting(false);
+                  setSearching(false);
+                  setLogout(true);
+                }}
               />
             </div>
           </div>
@@ -140,6 +154,12 @@ const HomePage = () => {
               <HomeUsersChatList />
               <HomeUsersChatArea />
             </div>
+          )}
+          {logout && (
+            <LogoutPoupup
+              handleLogoutPopup={setLogout}
+              handleLogout={handleLogout}
+            />
           )}
         </div>
       </div>
