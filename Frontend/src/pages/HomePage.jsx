@@ -83,7 +83,11 @@ const HomePage = () => {
             <div className="size-7 rounded-full border-2 border-gray-600 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer flex items-center justify-center">
               <IoArrowBackCircleOutline
                 className="text-white w-full h-full"
-                onClick={handleLogout}
+                onClick={(e) => {
+                  setTexting(false);
+                  setSearching(false);
+                  setLogout(true);
+                }}
               />
             </div>
           </div>

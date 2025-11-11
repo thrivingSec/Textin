@@ -1,5 +1,5 @@
 import express from 'express';
-import { acceptReq, rejectReq, searchUsers, sendConnectionReq, updateProfile } from '../Controllers/user.controller.js';
+import { acceptReq, deleteUser, rejectReq, searchUsers, sendConnectionReq, updateProfile } from '../Controllers/user.controller.js';
 import { isAuthenticated } from '../Middlewares/isAuth.js';
 import { isVerified } from '../Middlewares/isVerified.js';
 import { upload } from '../Middlewares/multer.js';
@@ -10,6 +10,11 @@ const route = express.Router();
 // @api method: PUT
 // @api endpoint: /api/user/profile
 route.put("/profile", isAuthenticated, isVerified, upload.single('image'), updateProfile)
+
+// @api dsc: user profile deletion
+// @api method: POST
+// @api endpoint: /api/user/delete
+route.post("/delete", isAuthenticated, isVerified, deleteUser)
 
 // @api dsc: search other users to connect with
 // @api method: GET

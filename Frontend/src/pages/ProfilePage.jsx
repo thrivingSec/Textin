@@ -16,6 +16,7 @@ import UserPendingRequestCard from "../components/UserPendingRequestCard.jsx";
 import AllConnections from "../components/AllConnections.jsx";
 import AllRequests from "../components/AllRequests.jsx";
 import { getLoginUser } from "../utils/getLoginUser.jsx";
+import DeletePopup from "../components/DeletePopup.jsx";
 
 const ProfilePage = () => {
   getLoginUser();
@@ -34,6 +35,7 @@ const ProfilePage = () => {
 
   const [showConnects, setShowConnects] = useState(false);
   const [showRequests, setShowRequests] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -59,6 +61,23 @@ const ProfilePage = () => {
       setIsUpdating(false);
     }
   };
+
+  const handleDeleteAccount = async (e) => {
+    try {
+      const response = await axios.post(
+        `${serverURL}/api/user/delete`,
+        {},
+        { withCredentials: true }
+      );
+      if (response.data.success) {
+        dispatch(setLoginUser(null));
+        navigate("/");
+      }
+    } catch (error) {
+      toast(error.response.data.message);
+      console.log("Error in handleDeleteAccount :: ", error);
+    }
+  };
   if (!loginUser) {
     return <div>Loading State</div>;
   }
@@ -67,7 +86,7 @@ const ProfilePage = () => {
       {/* blur effect */}
       <div className="-top-32 -left-32 w-[400px] h-[400px] bg-gradient-to-r from-blue-600/30 to-purple-600/30 blur-3xl rounded-full animate-pulse absolute"></div>
       {/* profile container */}
-      {!showConnects && !showRequests && (
+      {!showConnects && !showRequests && !showDelete && (
         <div className="relative w-full max-w-2xl px-2 lg:px-4 py-6 lg:py-8 border-2 border-gray-700 bg-gray-800 rounded-lg shadow-2xl flex flex-col items-center gap-4">
           {/* profile image */}
           <div className="relative w-[200px] h-[200px] border-2 border-gray-900 rounded-full shadow-2xl shadow-gray-600 flex items-center justify-center">
@@ -153,7 +172,14 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="w-full flex items-center justify-center gap-[10px]">
-            <button className="w-[120px] text-white p-1 bg-gray-900 border-2 border-gray-700 rounded-lg hover:bg-red-500 active:bg-red-700 cursor-pointer transition-all duration-300">
+            <button
+              className="w-[120px] text-white p-1 bg-gray-900 border-2 border-gray-700 rounded-lg hover:bg-red-500 active:bg-red-700 cursor-pointer transition-all duration-300"
+              onClick={(e) => {
+                setShowConnects(false);
+                setShowRequests(false);
+                setShowDelete(true);
+              }}
+            >
               Delete
             </button>
             <button
@@ -166,17 +192,23 @@ const ProfilePage = () => {
           </div>
         </div>
       )}
-      {showConnects && !showRequests && (
+      {showConnects && !showRequests && !showDelete && (
         <AllConnections
           handleShowConnects={setShowConnects}
           connection={loginUser.connection}
           loginUserId={loginUser._id}
         />
       )}
-      {!showConnects && showRequests && (
+      {!showConnects && showRequests && !showDelete && (
         <AllRequests
           handleShowRequests={setShowRequests}
           pending={loginUser.pending}
+        />
+      )}
+      {!showConnects && !showRequests && showDelete && (
+        <DeletePopup
+          handleDeletePopup={setShowDelete}
+          handleDeleteAccount={handleDeleteAccount}
         />
       )}
     </div>

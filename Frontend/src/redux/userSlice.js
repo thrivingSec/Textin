@@ -6,7 +6,6 @@ const userSlice = createSlice({
     loginUser:null,
     textingUser:null,
     liveUsers:null,
-    sockObj:null
   },
   reducers:{
     setLoginUser: (state, action) => {
@@ -17,12 +16,9 @@ const userSlice = createSlice({
     },
     setLiveUsers: (state, action) => {
       state.liveUsers = action.payload;
-    },
-    setSockObj: (state, action) => {
-      state.sockObj = action.payload;
     }
   }
 })
 
-export const {setLoginUser, setTextingUser, setLiveUsers, setSockObj} = userSlice.actions;
+export const {setLoginUser, setTextingUser, setLiveUsers} = userSlice.actions;
 export default userSlice.reducer;

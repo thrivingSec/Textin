@@ -1,5 +1,7 @@
 import { imageUpload } from "../Config/cloudinary.js";
 import Connection from "../Models/connection.model.js";
+import Conversation from "../Models/conversation.model.js";
+import Message from "../Models/message.model.js";
 import Users from "../Models/user.model.js";
 
 export const updateProfile = async (req, res) => {
@@ -156,6 +158,32 @@ export const rejectReq = async (req, res) => {
   } catch (error) {
     console.log('Error in acceptReq :: ', error.message);
     return res.status(500).json({message:"internal server error", success:false});
+  }
+}
+
+export const deleteUser = async (req, res) => {
+  try {
+    const user = req.user;
+
+    const [connection, conversation, messages] = await Promise.all([
+      Connection.deleteMany({$or:[{from:user._id},{to:user._id}]}),
+      Conversation.deleteMany({participants:{$in:[user._id]}}),
+      Message.deleteMany({$or:[{from:user._id},{to:user._id}]})
+    ])
+
+    const theUser = await Users.findByIdAndDelete(user._id)
+    console.log(`${connection.deletedCount} Connection deleted`);
+    console.log(`${conversation.deletedCount} Conversation deleted`);
+    console.log(`${messages.deletedCount} Messages deleted`);
+    console.log(`${theUser} User deleted`);
+
+    res.status(200).json({
+      success:true,
+      message:"User deleted successfully"
+    })
+  } catch (error) {
+    console.log('Error in deleteUser ::', error.message);
+    res.status(500).json('Internal server error')
   }
 }
 

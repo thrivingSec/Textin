@@ -9,7 +9,7 @@ import OneTimePassPage from "./pages/OneTimePassPage";
 import { Toaster } from "react-hot-toast";
 import ProfilePage from "./pages/ProfilePage";
 import { useEffect } from "react";
-import { setLiveUsers, setSockObj } from "./redux/userSlice";
+import { setLiveUsers } from "./redux/userSlice";
 import { getSocket, initSocket } from "./socketIO/socket.js";
 
 const App = () => {
